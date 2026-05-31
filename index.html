@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>沪升学数据局 | 上海中高考与学校数据库</title>
+    <meta
+      name="description"
+      content="面向上海家长和学生的本地化升学数据网站，展示中考、高考控制线，高中升学排行榜，高中与大学介绍。"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="沪升学数据局首页">
+        <span class="brand-mark">沪</span>
+        <span>沪升学数据局</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#dashboard">数据看板</a>
+        <a href="#ranking">升学排行榜</a>
+        <a href="#schools">学校库</a>
+        <a href="#sources">数据来源</a>
+      </nav>
+      <a class="header-action" href="#ranking">查看排名</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img
+          class="hero-image"
+          src="assets/shanghai-education-hero.png"
+          alt="上海家长和学生一起查看升学数据"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Shanghai Education Data</p>
+          <h1 id="hero-title">把上海升学数据变成看得懂的选择地图</h1>
+          <p class="hero-copy">
+            面向幼升小、小升初、初升高和高考家庭，集中查看控制线、学校排名、区内热度和高中大学介绍。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#dashboard">进入数据看板</a>
+            <a class="button secondary" href="#schools">浏览学校库</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section data-dashboard" id="dashboard" aria-labelledby="dashboard-title">
+        <div class="section-heading">
+          <p class="eyebrow">2025 Key Lines</p>
+          <h2 id="dashboard-title">上海中高考关键控制线</h2>
+          <p>先看全市基准线，再进入学校与区域细分数据。分数线仅用于历史参考，不等同于未来录取承诺。</p>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card high">
+            <span>中招自招 / 名额分配</span>
+            <strong>605</strong>
+            <p>2025 年普通高中自主招生录取、名额分配综合评价录取最低投档控制分数线。</p>
+          </article>
+          <article class="metric-card">
+            <span>普通高中统一招生</span>
+            <strong>513</strong>
+            <p>2025 年上海普通高中统一招生录取最低投档控制分数线。</p>
+          </article>
+          <article class="metric-card">
+            <span>高考本科批</span>
+            <strong>402</strong>
+            <p>2025 年上海普通高校招生本科录取控制分数线。</p>
+          </article>
+          <article class="metric-card high">
+            <span>高考特殊类型</span>
+            <strong>505</strong>
+            <p>2025 年上海特殊类型招生控制分数线。</p>
+          </article>
+        </div>
+
+        <div class="insight-strip" aria-label="数据提示">
+          <span>数据口径</span>
+          <p>中考满分 750；高考上海本科批控制线按上海市教育考试院公布口径展示。</p>
+        </div>
+      </section>
+
+      <section class="section ranking-section" id="ranking" aria-labelledby="ranking-title">
+        <div class="section-heading row">
+          <div>
+            <p class="eyebrow">Ranking</p>
+            <h2 id="ranking-title">升学排行榜</h2>
+            <p>当前内置浦东新区 2025 年统一招生样本，支持按分数、学校类型和关键词筛选。</p>
+          </div>
+          <div class="ranking-tools">
+            <input id="school-search" type="search" placeholder="搜索学校，如：建平 / 复旦" />
+            <select id="rank-filter" aria-label="筛选学校类型">
+              <option value="all">全部类型</option>
+              <option value="city">市实验性示范性</option>
+              <option value="district">区实验性示范性</option>
+              <option value="feature">特色 / 其他高中</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="rank-table-wrap">
+          <table class="rank-table">
+            <thead>
+              <tr>
+                <th>排名</th>
+                <th>学校</th>
+                <th>所属区</th>
+                <th>类型</th>
+                <th>2025 最低分</th>
+                <th>详情</th>
+              </tr>
+            </thead>
+            <tbody id="rank-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section school-section" id="schools" aria-labelledby="schools-title">
+        <div class="section-heading row">
+          <div>
+            <p class="eyebrow">School Library</p>
+            <h2 id="schools-title">高中与大学介绍</h2>
+            <p>用卡片快速比较学校定位、优势方向、适合人群和升学关注点。</p>
+          </div>
+          <div class="segmented" role="tablist" aria-label="学校类型">
+            <button class="segment active" type="button" data-library="highschools">高中</button>
+            <button class="segment" type="button" data-library="universities">大学</button>
+          </div>
+        </div>
+        <div class="card-grid" id="school-cards"></div>
+      </section>
+
+      <section class="section path-section" aria-labelledby="path-title">
+        <div class="section-heading">
+          <p class="eyebrow">For Families</p>
+          <h2 id="path-title">不同阶段家长该看什么数据</h2>
+        </div>
+        <div class="path-grid">
+          <article>
+            <span>幼升小</span>
+            <h3>看区域与对口</h3>
+            <p>重点关注户籍、房产、统筹规则、集团化办学和小学到初中的衔接生态。</p>
+          </article>
+          <article>
+            <span>小升初</span>
+            <h3>看初中出口</h3>
+            <p>对比区内初中梯队、民办摇号、公办保底和未来中考名额分配机会。</p>
+          </article>
+          <article>
+            <span>初升高</span>
+            <h3>看高中录取线</h3>
+            <p>结合目标高中最低分、区内排序、名额分配和统一招生路径做志愿组合。</p>
+          </article>
+          <article>
+            <span>高考</span>
+            <h3>看高校与专业</h3>
+            <p>从本科线、特招线、高校层次、专业方向和就业城市偏好反推高中阶段选择。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section source-section" id="sources" aria-labelledby="sources-title">
+        <div class="section-heading">
+          <p class="eyebrow">Data Sources</p>
+          <h2 id="sources-title">数据来源与后续扩展</h2>
+          <p>本站原型使用公开来源构建样例数据结构，后续可继续接入 16 区完整录取线、学校历年曲线和高校专业组数据。</p>
+        </div>
+        <div class="source-list">
+          <a href="https://www.shmeea.edu.cn/page/02200/20250623/19541.html" target="_blank" rel="noreferrer">
+            上海市教育考试院：2025 年上海高考本科各批次录取控制分数线
+          </a>
+          <a href="https://www.shanghai.gov.cn/xbhygq/20250709/d7322a7f4a924b689641332deadd7332.html" target="_blank" rel="noreferrer">
+            上海市人民政府：2025 年上海高中阶段学校招生最低投档控制分数线
+          </a>
+          <a href="https://www.pudong.gov.cn/zwgk/zzzk-jyjzdgz/2025/198/342581/157f078d5fa94014bd8faf349226a368.pdf" target="_blank" rel="noreferrer">
+            浦东新区教育局：2025 年“1 至 15 志愿”统一招生录取最低分数线 PDF
+          </a>
+          <a href="https://www.shmeea.edu.cn/download/20250430/90.pdf" target="_blank" rel="noreferrer">
+            上海市教育考试院：2025 年上海市高中招生学校名单
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal" id="detail-modal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="true"></div>
+      <article class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" type="button" data-close="true" aria-label="关闭详情">×</button>
+        <p class="eyebrow" id="modal-kicker">School Detail</p>
+        <h2 id="modal-title"></h2>
+        <p id="modal-summary"></p>
+        <dl class="detail-list" id="modal-details"></dl>
+      </article>
+    </div>
+
+    <footer class="site-footer">
+      <span>沪升学数据局</span>
+      <span>上海本地化升学数据 · 学校介绍 · 家庭决策参考</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
